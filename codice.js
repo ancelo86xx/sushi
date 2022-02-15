@@ -1,59 +1,66 @@
-let riepilogo = document.getElementById ('riepilogo');
-let ordine = document.getElementById('Ordina');
-let qCalifornia = document.getElementById('qCalifornia');
 
+function initCart () {
+    if(!window.localStorage.getItem('cart'))
+        window.localStorage.setItem('cart', '[]')
+}
 
-ordine.addEventListener('click',()=>{
-    window.open("pagamento.html", "_target");
-    qCalifornia.innerHTML = (Dynamite);
-    })
+function addCartDragon (nome, qnt){
+    let cart = JSON.parse(window.localStorage.getItem('cart'))
+    let obj = {
+        nome,
+        qnt
+    }
+    cart.push(obj)
+    
+        for (i=0; i<cart.length; i++){
+            if (cart[i].nome == "Dragon Roll" ){
+                let newqntc = cart[i].qnt
+                newqntc = newqntc + 1
+                cart[i].qnt = newqntc
+                console.log(cart[i])                                  
+          }
+            }
+       
+  window.localStorage.setItem('cart', JSON.stringify(cart))
+}
 
+function addCartCalifornia (nome, qnt){
+    let cart = JSON.parse(window.localStorage.getItem('cart'))
+    let obj = {
+        nome,
+        qnt
+    }
+    cart.push(obj)
+    
+        for (i=0; i<cart.length; i++){
+            if (cart[i].nome == "California Roll" ){
+                let newqntc = cart[i].qnt
+                newqntc = newqntc + 1
+                cart[i].qnt = newqntc
+                console.log(cart[i])                                  
+          }
+            }
+       
+  window.localStorage.setItem('cart', JSON.stringify(cart))
+}
 
+function addCartDynamite (nome, qnt){
+    let cart = JSON.parse(window.localStorage.getItem('cart'))
+    let obj = {
+        nome,
+        qnt
+    }
+    cart.push(obj)
+    
+        for (i=0; i<cart.length; i++){
+            if (cart[i].nome == "Dynamite Roll" ){
+                let newqntc = cart[i].qnt
+                newqntc = newqntc + 1
+                cart[i].qnt = newqntc
+                console.log(cart[i])                                  
+            }
+            }
+       
+  window.localStorage.setItem('cart', JSON.stringify(cart))
+}
 
-    let California = document.getElementById ('California');
-   California.addEventListener('click',()=>{
-    California= prompt('Inserisci la quantità');
-    console.log('California: ' + California + 'pz');
-    return California;
-
-})
-
-
-let Dynamite = document.getElementById ('Dynamite');
-Dynamite.addEventListener('click',()=>{
-    Dynamite= prompt('Inserisci la quantità');
-    console.log('Dynamite: ' + Dynamite + 'pz');
-
-})
-
-let Dragon = document.getElementById ('Dragon');
-Dragon.addEventListener('click',()=>{
-    Dragon= prompt('Inserisci la quantità');
-    console.log('Dragon: ' + Dragon + 'pz');
-
-})
-
-let Philadelphia = document.getElementById ('Philadelphia');
-Philadelphia.addEventListener('click',()=>{
-    let qntPhiladelphia;
-    qntPhiladelphia= prompt('Inserisci la quantità');
-    console.log('Philadelphia: ' + qntPhiladelphia + 'pz');
-
-})
-
-let Shrimp = document.getElementById ('Shrimp');
-Shrimp.addEventListener('click',()=>{
-    let qntShrimp;
-    qntShrimp= prompt('Inserisci la quantità');
-    console.log('Shrimp: ' + qntShrimp + 'pz');
-    return qntShrimp;
-
-})
-
-let Rainbow = document.getElementById ('Rainbow');
-Rainbow.addEventListener('click',()=>{
-    let qntRainbow;
-    qntRainbow= prompt('Inserisci la quantità');
-    console.log('Rainbow: ' + qntRainbow + 'pz');
-
-})
