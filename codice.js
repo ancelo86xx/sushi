@@ -14,11 +14,12 @@ function addCartDragon (nome, qnt){
     
         for (i=0; i<cart.length; i++){
             if (cart[i].nome == "Dragon Roll" ){
-                let newqntc = cart[i].qnt
-                newqntc = newqntc + 1
-                cart[i].qnt = newqntc
+                let newqnt = cart[i].qnt
+                newqnt = newqnt + 1
+                cart[i].qnt = newqnt
                 console.log(cart[i])                                  
           }
+
             }
        
   window.localStorage.setItem('cart', JSON.stringify(cart))
@@ -34,11 +35,13 @@ function addCartCalifornia (nome, qnt){
     
         for (i=0; i<cart.length; i++){
             if (cart[i].nome == "California Roll" ){
-                let newqntc = cart[i].qnt
-                newqntc = newqntc + 1
-                cart[i].qnt = newqntc
+                let newqnt = cart[i].qnt
+                newqnt = newqnt + 1
+                cart[i].qnt = newqnt
                 console.log(cart[i])                                  
           }
+   
+          
             }
        
   window.localStorage.setItem('cart', JSON.stringify(cart))
@@ -54,10 +57,13 @@ function addCartDynamite (nome, qnt){
     
         for (i=0; i<cart.length; i++){
             if (cart[i].nome == "Dynamite Roll" ){
-                let newqntc = cart[i].qnt
-                newqntc = newqntc + 1
-                cart[i].qnt = newqntc
+                let newqnt = cart[i].qnt
+                newqnt = newqnt + 1
+                cart[i].qnt = newqnt
                 console.log(cart[i])                                  
+            }
+            if(cart.length = 3){
+                cart.pop(obj)
             }
             }
        
