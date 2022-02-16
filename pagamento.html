@@ -13,7 +13,7 @@
     <title>Pagamento</title>
 </head>
 
-<body onload="ordini()">
+<body onload="getCart()">
     <nav class="navbar navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
@@ -25,28 +25,17 @@
 
     <div class="container my-5 text-center" style="max-width: 580px;">
         <h1>Riepilogo Ordine</h1>
+        <button onclick="cartEmpty()">Svuota Carrello</button>
         <table class="table">
             <thead>
                 <tr>
                     <th scope="col">Prodotto</th>
                     <th scope="col">Quantità</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td >California</td>
-                    <td id="qntCalifornia"></td>
-                </tr>
-                <tr>
-                    <td>Dynamite</td>
-                    <td id="qntDynamite"></td>
-                </tr>
-                <tr>
-                    <td>Dragon</td>
-                    <td id="qntpDragon"></td>
-                </tr>
-                
-                
+            <tbody id="bodyTable">
+                              
             </tbody>
         </table>
     </div>

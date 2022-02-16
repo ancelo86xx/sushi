@@ -34,8 +34,9 @@
             <h5 class="card-title">California Roll</h5>
             <p class="card-text">Un piatto ricco di saggezza e tradizione. Ogni caloria ingerita contiene il coraggio di
               Son Goku, la perspicacia del Detectiv Conan e la prestanza fisica di Doraemon</p>
-            <button type="button" class="btn btn-primary btn-add-cart"
-             onclick="addCartCalifornia('California Roll', 0)">Aggiungi</button>
+              <input type="number" placeholder="Inserisci quantita" id="addQntToCartCalifornia" value="1">
+              <button type="button" class="btn btn-primary btn-add-cart"
+             onclick="addCart('California Roll', document.getElementById('addQntToCartCalifornia').value)">Aggiungi</button>
           </div>
         </div>
       </div>
@@ -46,8 +47,9 @@
           <h5 class="card-title">Dynamite Roll</h5>
           <p class="card-text">Un piatto ricco di saggezza e tradizione. Ogni caloria ingerita contiene il coraggio di
             Son Goku, la perspicacia del Detectiv Conan e la prestanza fisica di Doraemon</p>
+            <input type="number" placeholder="Inserisci quantita" id="addQntToCartDynamite" value="1">
              <button type="button" class="btn btn-primary btn-add-cart"
-            onclick="addCartDynamite('Dynamite Roll', 0)">Aggiungi</button>
+            onclick="addCart('Dynamite Roll', document.getElementById('addQntToCartDynamite').value)">Aggiungi</button>
         </div>
       </div>
     </div>
@@ -57,8 +59,9 @@
           <h5 class="card-title">Dragon Roll</h5>
           <p class="card-text">Un piatto ricco di saggezza e tradizione. Ogni caloria ingerita contiene il coraggio di
             Son Goku, la perspicacia del Detectiv Conan e la prestanza fisica di Doraemon</p>
+            <input type="number" placeholder="Inserisci quantita" id="addQntToCartDragon" value="1">
           <button type="button" class="btn btn-primary btn-add-cart"
-            onclick="addCartDragon('Dragon Roll',0 )">Aggiungi</button>
+            onclick="addCart('Dragon Roll', document.getElementById('addQntToCartDragon').value)">Aggiungi</button>
         </div>
       </div>
     </div>
