@@ -4,9 +4,8 @@ function initCart () {
     window.localStorage.setItem('cart', '[]')
 }
 
-function addCart (nome, qnt){
-    if(qnt == '' || isNaN(qnt) || '0') qnt = 1
-
+function addCart (nome, qnt, price){
+    if(qnt == '' || isNaN(qnt) || 0) qnt = 1
     let cart = JSON.parse(window.localStorage.getItem('cart'))
     if (!cart){
         initCart()
@@ -15,13 +14,15 @@ function addCart (nome, qnt){
     for (i=0; i<cart.length; i++){
         if (nome == cart[i].nome){
             cart[i].qnt += parseInt(qnt)
+            cart[i].price *= cart[i].qnt
             found = true
         }
     }
         if(!found){
         cart.push({
             nome,
-            qnt: parseInt(qnt)
+            qnt: parseInt(qnt),
+            price: qnt*price
         })
     }
     
@@ -34,7 +35,7 @@ function getCart(){
     let riga = ''
     let body = document.getElementById('bodyTable')
     for (i=0; i<cart.length; i++){
-      riga += '<tr><td>' + cart[i].nome + '</td><td>' + cart[i].qnt + '</td><td><button onclick="removeItem('+i+')">elimina</button></td><td><button onclick="modCart('+i+')">Modifica</button></td></tr>'
+      riga += '<tr><td>' + cart[i].nome + '</td><td>' + cart[i].qnt + '</td><td>' + cart[i].price + '</td><td><button onclick="removeItem('+i+')">elimina</button></td><td><button onclick="modCart('+i+')">Modifica</button></td></tr>'
     }
     body.innerHTML = riga
 }
@@ -54,11 +55,13 @@ function removeItem (i){
 function modCart (i){
     let cart = JSON.parse(window.localStorage.getItem('cart'))
     let newqnt = prompt('inserisci quantita')
-    if(newqnt == '' || '0') {
+    if(newqnt == 0 ||  '') {
         removeItem (i)
-    }else{
-    cart[i].qnt = parseInt(newqnt)
-    window.localStorage.setItem('cart', JSON.stringify(cart))   
-    getCart()
     }
-}
+    else{
+        cart[i].qnt = parseInt(newqnt)
+        cart[i].price *= cart[i].qnt
+        window.localStorage.setItem('cart', JSON.stringify(cart))   
+        getCart()
+    }
+    }
