@@ -5,7 +5,7 @@ function initCart () {
 }
 
 function addCart (nome, qnt){
-    if(qnt == '' || isNaN(qnt)) qnt = 1
+    if(qnt == '' || isNaN(qnt) || '0') qnt = 1
 
     let cart = JSON.parse(window.localStorage.getItem('cart'))
     if (!cart){
@@ -18,8 +18,7 @@ function addCart (nome, qnt){
             found = true
         }
     }
-    console.log(qnt, parseInt(qnt))
-    if(!found){
+        if(!found){
         cart.push({
             nome,
             qnt: parseInt(qnt)
@@ -27,18 +26,16 @@ function addCart (nome, qnt){
     }
     
     window.localStorage.setItem('cart', JSON.stringify(cart))          
- 
+    getCart()
 }
 
 function getCart(){
     let cart = JSON.parse(window.localStorage.getItem('cart'))
     let riga = ''
     let body = document.getElementById('bodyTable')
-    console.log(body)
     for (i=0; i<cart.length; i++){
-      riga += '<tr><td>' + cart[i].nome + '</td><td>' + cart[i].qnt + '</td><td><button onclick="removeItem('+i+')">elimina</button></td></tr>'
+      riga += '<tr><td>' + cart[i].nome + '</td><td>' + cart[i].qnt + '</td><td><button onclick="removeItem('+i+')">elimina</button></td><td><button onclick="modCart('+i+')">Modifica</button></td></tr>'
     }
-    console.log(riga)
     body.innerHTML = riga
 }
 
@@ -52,8 +49,16 @@ function removeItem (i){
     let cart = JSON.parse(window.localStorage.getItem('cart'))
     cart.splice(i,1);
     window.localStorage.setItem('cart', JSON.stringify(cart))   
+    getCart()   
+}
+function modCart (i){
+    let cart = JSON.parse(window.localStorage.getItem('cart'))
+    let newqnt = prompt('inserisci quantita')
+    if(newqnt == '' || '0') {
+        removeItem (i)
+    }else{
+    cart[i].qnt = parseInt(newqnt)
+    window.localStorage.setItem('cart', JSON.stringify(cart))   
     getCart()
-   
-  
-    
+    }
 }

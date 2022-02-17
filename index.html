@@ -23,12 +23,11 @@
   <div class="container my-5 text-center">
     <h1>Sushi per programmatori</h1>
     <p class="lead">Concediti una favolosa pausa ricca di sapore e carboidrati.</p>
-    <a href="./pagamento.html" class="btn btn-secondary">Ordina</a>
-  </div>
+    </div>
   <div class="container">
     <div class="row">
       <div class="col-sm">
-        <div class="card" style="width: 18rem;">
+        <div class="card" style="width: 15rem;">
           <img src="images/california.png" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">California Roll</h5>
@@ -41,7 +40,7 @@
         </div>
       </div>
       <div class="col-sm">
-      <div class="card" style="width: 18rem;">
+      <div class="card" style="width: 15rem;">
         <img src="images/dynamite.png" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Dynamite Roll</h5>
@@ -53,7 +52,8 @@
         </div>
       </div>
     </div>
-      <div class="card" style="width: 18rem;">
+    <div class="col-sm">
+      <div class="card" style="width: 15rem;">
         <img src="images/dragon.png" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Dragon Roll</h5>
@@ -65,8 +65,27 @@
         </div>
       </div>
     </div>
-  </div>
 
+    <div class="col-sm">
+      <div class="card" style="width:30rem;">
+        <h1>Riepilogo Ordine</h1>
+        <button onclick="cartEmpty()">Svuota Carrello</button>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Prodotto</th>
+                    <th>Quantità</th>
+                    
+                </tr>
+            </thead>
+            <tbody id="bodyTable">
+                              
+            </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
 
 
   </div>
