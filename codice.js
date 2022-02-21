@@ -3,10 +3,12 @@ function initCart () {
     if(!window.localStorage.getItem('cart'))
     window.localStorage.setItem('cart', '[]')
 }
-
+    let v;
 function addCart (nome, qnt, price){
+    
     if(qnt == '' || isNaN(qnt) || 0) qnt = 1
     let cart = JSON.parse(window.localStorage.getItem('cart'))
+    v = price
     if (!cart){
         initCart()
     }
@@ -14,7 +16,7 @@ function addCart (nome, qnt, price){
     for (i=0; i<cart.length; i++){
         if (nome == cart[i].nome){
             cart[i].qnt += parseInt(qnt)
-            cart[i].price *= cart[i].qnt
+            cart[i].price = cart[i].qnt * v
             found = true
         }
     }
@@ -22,20 +24,40 @@ function addCart (nome, qnt, price){
         cart.push({
             nome,
             qnt: parseInt(qnt),
-            price: qnt*price
+            price : qnt * price
+
         })
     }
     
     window.localStorage.setItem('cart', JSON.stringify(cart))          
     getCart()
+    return v
 }
+
+
+function modCart (i){
+    
+    let cart = JSON.parse(window.localStorage.getItem('cart'))
+    v = cart[i].price / cart[i].qnt
+    qnt = prompt('inserisci quantita')
+    if(qnt == 0 ||  '') {
+    removeItem (i)
+    }
+    else{
+        cart[i].qnt = parseInt(qnt)
+	   cart[i].price = cart[i].qnt * v
+        window.localStorage.setItem('cart', JSON.stringify(cart)) 
+          
+        getCart()
+    }
+    }
 
 function getCart(){
     let cart = JSON.parse(window.localStorage.getItem('cart'))
     let riga = ''
     let body = document.getElementById('bodyTable')
     for (i=0; i<cart.length; i++){
-      riga += '<tr><td>' + cart[i].nome + '</td><td>' + cart[i].qnt + '</td><td>' + cart[i].price + '</td><td><button onclick="removeItem('+i+')">elimina</button></td><td><button onclick="modCart('+i+')">Modifica</button></td></tr>'
+      riga += '<tr><td>' + cart[i].nome + '</td><td>' + cart[i].qnt + '</td><td>' + cart[i].price + ' €</td><td><button onclick="removeItem('+i+')">elimina</button></td><td><button onclick="modCart('+i+')">Modifica</button></td></tr>'
     }
     body.innerHTML = riga
 }
@@ -52,16 +74,4 @@ function removeItem (i){
     window.localStorage.setItem('cart', JSON.stringify(cart))   
     getCart()   
 }
-function modCart (i){
-    let cart = JSON.parse(window.localStorage.getItem('cart'))
-    let newqnt = prompt('inserisci quantita')
-    if(newqnt == 0 ||  '') {
-        removeItem (i)
-    }
-    else{
-        cart[i].qnt = parseInt(newqnt)
-        cart[i].price *= cart[i].qnt
-        window.localStorage.setItem('cart', JSON.stringify(cart))   
-        getCart()
-    }
-    }
+
