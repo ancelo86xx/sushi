@@ -3,7 +3,7 @@ function initCart () {
     if(!window.localStorage.getItem('cart'))
     window.localStorage.setItem('cart', '[]')
 }
-    let v;
+ 
 function addCart (nome, qnt, price){
     
     if(qnt == '' || isNaN(qnt) || 0) qnt = 1
@@ -38,7 +38,7 @@ function addCart (nome, qnt, price){
 function modCart (i){
     
     let cart = JSON.parse(window.localStorage.getItem('cart'))
-    v = cart[i].price / cart[i].qnt
+    let v = cart[i].price / cart[i].qnt
     qnt = prompt('inserisci quantita')
     if(qnt == 0 ||  '') {
     removeItem (i)
